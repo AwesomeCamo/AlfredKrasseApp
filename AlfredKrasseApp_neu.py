@@ -78,14 +78,20 @@ def lehrerkürzel():
                   ["KK","Kirsten Kaufland","kk@schulebza.com"],
                   ["AKK","Anne Kern","akk@schulebza.com"]]
 
-    print(": Kürzel " " " " : Name "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" : EMail "" "" "" "" "" "" "" "" "" "" "" ""  :")
-    for item in nestedList:
-        print(":", item[0]," "*(7-len(item[0])),":",item[1]," "*(20-len(item[1])),":",item[2]," "*(17-len(item[2])),":")
+    #print(": Kürzel " " " " : Name "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" : EMail "" "" "" "" "" "" "" "" "" "" "" ""  :")
+    #for item in nestedList:
+        #print(":", item[0]," "*(7-len(item[0])),":",item[1]," "*(20-len(item[1])),":",item[2]," "*(17-len(item[2])),":")
 
     myInformation.pack_forget()
     myLehrerkürzel.pack_forget()
     myHauptmenü4_2.pack_forget()
     myButton4.pack(side=LEFT)
+    lehrerkürzelText = Text(root, height=8)
+    lehrerkürzelText.pack()
+    for item in nestedList:
+        lehrerkürzelText.insert('1.0',' '.join(map(str, item)))
+        lehrerkürzelText.insert('1.0', "\n")
+
 
 frame = Frame(root)
 frame.pack()
