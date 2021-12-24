@@ -8,7 +8,7 @@ rootHeight = root.winfo_height()                        #die Höhe des Fensters
 rootWidth = root.winfo_width()                          #die Breite des Fensters
 root['background'] = '#FFFEF6'                          #der Hintergrund
 
-def Unterricht():                                       #Funktion erstellen
+def unterricht():                                       #Funktion erstellen
     myButton1.pack_forget()                             #vergisst den grid, kann aber wieder neu aufgerufen werden durch "myButton.pack()"
     myButton2.pack_forget()
     myButton3.pack_forget()
@@ -17,7 +17,7 @@ def Unterricht():                                       #Funktion erstellen
     myButton4.pack(side=LEFT)                           #button wird angezeigt
     return
 
-def Hauptmenü():
+def hauptmenü():
     myButton4.pack_forget()
     myHauptmenü4_2.pack_forget()
     myLehrerkürzel.pack_forget()
@@ -27,11 +27,9 @@ def Hauptmenü():
     myButton3.pack(side=LEFT)
     myEvent.pack(side=LEFT)
     myAusfall.pack(side=LEFT)
-
-
     return
 
-def Schule():
+def schule():
     myButton1.pack_forget()
     myButton2.pack_forget()
     myButton3.pack_forget()
@@ -40,10 +38,9 @@ def Schule():
     myHauptmenü4_2.pack(side=LEFT)
     myLehrerkürzel.pack(side=LEFT)
     myInformation.pack(side=LEFT)
-
     return
 
-def Persönliche_Daten():
+def persönliche_daten():
     myButton1.pack_forget()
     myButton2.pack_forget()
     myButton3.pack_forget()
@@ -52,7 +49,7 @@ def Persönliche_Daten():
     myButton4.pack(side=LEFT)
     return
 
-def Event():
+def event():
     myButton1.pack_forget()
     myButton2.pack_forget()
     myButton3.pack_forget()
@@ -61,7 +58,7 @@ def Event():
     myButton4.pack(side=LEFT)
     return
 
-def Ausfall():
+def ausfall():
     myButton1.pack_forget()
     myButton2.pack_forget()
     myButton3.pack_forget()
@@ -70,7 +67,7 @@ def Ausfall():
     myButton4.pack(side=LEFT)
     return
 
-def Lehrerkürzel():
+def lehrerkürzel():
     nestedList = [["AND", "Mark Andauer", "and@schulebza.com"],
                   ["TR", "Werner Traube", "tr@schulebza.com"],
                   ["STF", "Wolfgang Streitfurth", "stf@schulebza.com"],
@@ -93,36 +90,36 @@ def Lehrerkürzel():
 frame = Frame(root)
 frame.pack()
 
-Topframe = Frame(root)
-Topframe.pack(side = TOP)
+topframe = Frame(root)
+topframe.pack(side = TOP)
 
-myButton1 = Button(frame, text="Unterricht",command=Unterricht, bg="#2d2d2d",fg="#e4bc1f",width=93,height=10)
+myButton1 = Button(frame, text="Unterricht",command=unterricht, bg="#2d2d2d",fg="#e4bc1f",width=93,height=10)
 myButton1.pack(side = LEFT) #die anordnung
 
-myButton2 = Button(frame, text="Schule",command=Schule, bg="#2d2d2d",fg="#e4bc1f",width=93,height=10)
+myButton2 = Button(frame, text="Schule",command=schule, bg="#2d2d2d",fg="#e4bc1f",width=93,height=10)
 myButton2.pack(side = LEFT)
 
-myButton3 = Button(frame, text="Persönliche Daten",command=Persönliche_Daten, bg="#2d2d2d",fg="#e4bc1f",width=93,height=10)
+myButton3 = Button(frame, text="Persönliche Daten",command=persönliche_daten, bg="#2d2d2d",fg="#e4bc1f",width=93,height=10)
 myButton3.pack(side = LEFT)
 
-Bottomframe = Frame(root)                                                                                               #Bottomframe, damit der Event und Ausfall Button unten steht
-Bottomframe.pack(side = BOTTOM)                                                                                         #die Anordnung
+bottomframe = Frame(root)                                                                                               #Bottomframe, damit der Event und Ausfall Button unten steht
+bottomframe.pack(side = BOTTOM)                                                                                         #die Anordnung
 
-myEvent = Button(text="Event",command=Event, bg="#2d2d2d",fg="#e4bc1f",width=140,height=65)                             #Eventbutton wurde erstellt
+myEvent = Button(text="Event",command=event, bg="#2d2d2d",fg="#e4bc1f",width=140,height=65)                             #Eventbutton wurde erstellt
 myEvent.pack(side= LEFT)
 
-myAusfall = Button(text="Ausfall/Vertretung",command=Ausfall, bg="#2d2d2d",fg="#e4bc1f",width=140,height=65)            #Ausfall/Vertretung Button wurde erstellt
+myAusfall = Button(text="Ausfall/Vertretung",command=ausfall, bg="#2d2d2d",fg="#e4bc1f",width=140,height=65)            #Ausfall/Vertretung Button wurde erstellt
 myAusfall.pack(side= RIGHT)
 
-myButton4 = Button(frame, text="Hauptmenü", command=Hauptmenü, bg="#2d2d2d", fg="#e4bc1f", width=93, height=10)         #Hauptmenü Button wurde erstellt
+myButton4 = Button(frame, text="Hauptmenü", command=hauptmenü, bg="#2d2d2d", fg="#e4bc1f", width=93, height=10)         #Hauptmenü Button wurde erstellt
 myButton4.pack(side=LEFT)
 myButton4.pack_forget()
 
-myHauptmenü4_2 = Button(frame, text="Hauptmenü", command=Hauptmenü, bg="#2d2d2d", fg="#e4bc1f", width=93, height=rootHeight)
+myHauptmenü4_2 = Button(frame, text="Hauptmenü", command=hauptmenü, bg="#2d2d2d", fg="#e4bc1f", width=93, height=rootHeight)
 myHauptmenü4_2.pack(side=LEFT)
 myHauptmenü4_2.pack_forget()
 
-myLehrerkürzel = Button(frame, text="Lehrerkürzel", command=Lehrerkürzel, bg="#2d2d2d", fg="#e4bc1f", width=93, height=rootHeight)
+myLehrerkürzel = Button(frame, text="Lehrerkürzel", command=lehrerkürzel, bg="#2d2d2d", fg="#e4bc1f", width=93, height=rootHeight)
 myLehrerkürzel.pack(side=LEFT)
 myLehrerkürzel.pack_forget()
 
