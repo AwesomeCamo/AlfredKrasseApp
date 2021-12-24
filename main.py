@@ -62,3 +62,4 @@ myAusfall = Label(text="Ausfall/Vertretung", bg="#2d2d2d",fg="#e4bc1f",width=roo
 myAusfall.pack(side= RIGHT)
 
 root.mainloop()
+
