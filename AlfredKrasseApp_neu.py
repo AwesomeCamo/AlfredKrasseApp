@@ -1,5 +1,11 @@
 from tkinter import *
+from pymongo import MongoClient
 
+cluster = MongoClient("mongodb+srv://Dennis:MHhRui10mongodb@cluster0.aitqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+db = cluster["Alfred-Krasse-App"]
+collection1 = db["Lehrerkürzel"]
+collection2 = db["Unterricht"]
+collection3 = db["Ausfall"]
 root = Tk()
 root.title('Alfred Krasse App')                         #titel name
 root.iconbitmap("./resources/images/HomeIcon.ico")      #Bild (icon oben links)
@@ -84,20 +90,20 @@ def lehrerkürzel():
     forgetinhalt()
     myButton2.config(bg="#7f7f7f")
     frame_grid.pack()
+    results = collection1.find({})
     i=0
-    Headline = Person("Kürzel","Name","E-Mail")
-    Dennis = Person("Frey","Dennis Frey","dede0ß3e21328^1@jfasgfiugasfs.com")
-    Emely = Person("LOOL","LECK MICH","emely.leckmich@gmail.com")
-    data = [Headline,Dennis,Emely]
-    for item in data:
+   # Headline = Person("Kürzel","Name","E-Mail")
+    #Dennis = Person("Frey","Dennis Frey","dede0ß3e21328^1@jfasgfiugasfs.com")
+    #Emely = Person("LOOL","LECK MICH","emely.leckmich@gmail.com")
+    for result in results:
         if i == 0:
-            label1 = Label(frame_grid,text=item.Kürzel, relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
-            label2 = Label(frame_grid,text=item.Name, relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
-            label3 = Label(frame_grid,text=item.EMail, relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
+            label1 = Label(frame_grid,text=result["Kürzel"], relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
+            label2 = Label(frame_grid,text=result["Name"], relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
+            label3 = Label(frame_grid,text=result["Email"], relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
         else:
-            label1 = Label(frame_grid,text=item.Kürzel,relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
-            label2 = Label(frame_grid,text=item.Name,relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
-            label3 =  Label(frame_grid,text=item.EMail,relief="solid",borderwidth="2", width=93,height=5, bg="#2d2d2d",fg="#e4bc1f")
+            label1 = Label(frame_grid,text=result["Kürzel"],relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
+            label2 = Label(frame_grid,text=result["Name"],relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
+            label3 =  Label(frame_grid,text=result["Email"],relief="solid",borderwidth="2", width=93,height=5, bg="#2d2d2d",fg="#e4bc1f")
         label1.grid(row=i, column=1,sticky=W,)
         label2.grid(row=i, column=2,sticky=W)
         label3.grid(row=i, column=3,sticky=W)

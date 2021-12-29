@@ -63,3 +63,11 @@ myAusfall.pack(side= RIGHT)
 
 root.mainloop()
 
+label2 = Label(frame_grid,text=result["Name"], relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
+            label3 = Label(frame_grid,text=result["Email"], relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
+
+label2 = Label(frame_grid,text=result["Name"],relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
+            label3 =  Label(frame_grid,text=result["Email"],relief="solid",borderwidth="2", width=93,height=5, bg="#2d2d2d",fg="#e4bc1f")
+
+label2.grid(row=i, column=2,sticky=W)
+        label3.grid(row=i, column=3,sticky=W)
