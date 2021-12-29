@@ -10,6 +10,7 @@ root = Tk()
 root.title('Alfred Krasse App')                         #titel name
 root.iconbitmap("./resources/images/HomeIcon.ico")      #Bild (icon oben links)
 root.geometry("1920x1080")                              #die größe der App
+root.resizable(0,0)
 rootHeight = root.winfo_height()                        #die Höhe des Fensters
 rootWidth = root.winfo_width()                          #die Breite des Fensters
 root['background'] = '#FFFEF6' #der Hintergrund
@@ -104,7 +105,7 @@ def lehrerkürzel():
             label1 = Label(frame_grid,text=result["Kürzel"],relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
             label2 = Label(frame_grid,text=result["Name"],relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
             label3 =  Label(frame_grid,text=result["Email"],relief="solid",borderwidth="2", width=93,height=5, bg="#2d2d2d",fg="#e4bc1f")
-        label1.grid(row=i, column=1,sticky=W,)
+        label1.grid(row=i, column=1,sticky=W)
         label2.grid(row=i, column=2,sticky=W)
         label3.grid(row=i, column=3,sticky=W)
         i+=1
