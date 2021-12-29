@@ -13,7 +13,8 @@ root.geometry("1920x1080")                              #die größe der App
 rootHeight = root.winfo_height()                        #die Höhe des Fensters
 rootWidth = root.winfo_width()                          #die Breite des Fensters
 root['background'] = '#FFFEF6' #der Hintergrund
-
+db = cluster["Alfred-Krasse-App"]
+collection1 = db["Lehrerkürzel"]
 
 navigation = Frame(root)
 navigation.pack()
@@ -33,27 +34,23 @@ frame_info2 = Frame(inhalt)
 frame_info2.pack()
 frame_info2.pack_forget()
 
-class Person:
-    def __init__(self,Kürzel,Name,EMail):
-        self.Kürzel = Kürzel
-        self.Name = Name
-        self.EMail = EMail
-
 class Information:
     def __init__(self,Name2,Position):
         self.Name2 = Name2
         self.Position = Position
+
 def datenbank_ausgabe(anfang):
-    results = collection1.find({})
+    results = collection1.find({"$and":[{"_id":{"$lt":anfang+15}},{"_id":{"$gt":anfang}}]})
     i=1
-    for result in range(anfang, anfang + 15):
-        label1 = Label(frame_grid, text=results[result]["Kürzel"], relief="solid", borderwidth="2", width=93, height=3, anchor=W,bg="#2d2d2d", fg="#e4bc1f")
-        label2 = Label(frame_grid, text=results[result]["Name"], relief="solid", borderwidth="2", width=93, height=3, anchor=W,bg="#2d2d2d", fg="#e4bc1f")
-        label3 = Label(frame_grid, text=results[result]["Email"], relief="solid", borderwidth="2", width=93, height=3, anchor=W,bg="#2d2d2d", fg="#e4bc1f")
+    for result in results:
+        label1 = Label(frame_grid, text=result["Kürzel"], relief="solid", borderwidth="2", width=93, height=3, bg="#2d2d2d", fg="#e4bc1f")
+        label2 = Label(frame_grid, text=result["Name"], relief="solid", borderwidth="2", width=93, height=3,bg="#2d2d2d", fg="#e4bc1f")
+        label3 = Label(frame_grid, text=result["Email"], relief="solid", borderwidth="2", width=93, height=3,bg="#2d2d2d", fg="#e4bc1f")
         label1.grid(row=i, column=1, sticky=W)
         label2.grid(row=i, column=2, sticky=W)
         label3.grid(row=i, column=3, sticky=W)
-        i += 1
+        i+=1
+
 
 
 def forgetinhalt():
@@ -65,6 +62,8 @@ def forgetinhalt():
     buttonblack()
     frame_info.pack_forget()
     frame_info2.pack_forget()
+    global seitenzähler
+    seitenzähler = 0
 
 def buttonblack():
     myButton1.config(bg="#2d2d2d")
@@ -98,12 +97,13 @@ def event():
 def ausfall():
     forgetinhalt()
 
-def lehrerkürzel():
-    forgetinhalt()
+def lehrerkürzel(seite):
+    forget_for_lehrerkürzel()
     myButton2.config(bg="#7f7f7f")
     frame_grid.pack()
+    for child in frame_grid.winfo_children():
+        child.destroy()
     i=0
-    x=0
     label1 = Label(frame_grid, text="Kürzel", relief="solid", borderwidth="2", width=93, height=3,
                    anchor=CENTER, bg="#2d2d2d", fg="#e4bc1f")
     label2 = Label(frame_grid, text="Name", relief="solid", borderwidth="2", width=93, height=3, anchor=CENTER,
@@ -113,9 +113,12 @@ def lehrerkürzel():
     label1.grid(row=i, column=1, sticky=W)
     label2.grid(row=i, column=2, sticky=W)
     label3.grid(row=i, column=3, sticky=W)
-    datenbank_ausgabe(0+x)
-    x=+16
+    datenbank_ausgabe(seite)
+    button_next = Button(frame_grid, text="Next", command=lambda: [add_seitenzähler(), lehrerkürzel(seitenzähler*16)], bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
+    button_next.grid(row=16, column=3,sticky=W)
 
+    button_back = Button(frame_grid,text="Back",command=lambda:[sub_seitenzähler(),lehrerkürzel(seitenzähler*16)],bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
+    button_back.grid(row=16, column=1,sticky=W)
 
 def über_die_Schule():
     forgetinhalt()
@@ -154,6 +157,14 @@ def über_die_Schule():
     anschrift.grid(row=x,column=1,sticky=W)
     telefon.grid(row=x+1,column=1,sticky=W)
 
+button_back = Button(frame_grid,text="Back",command=lambda:[sub_seitenzähler(),lehrerkürzel(seitenzähler*16)],bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
+button_back.grid(row=16, column=1,sticky=W)
+button_back.grid_forget()
+
+button_next = Button(frame_grid, text="Next", command=lambda: [add_seitenzähler(), lehrerkürzel(seitenzähler*16)], bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
+button_next.grid(row=16, column=3,sticky=W)
+button_next.grid_forget()
+
 myButton1 = Button(navigation, text="Unterricht", command=unterricht, bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
 myButton1.pack(side = LEFT) #die anordnung
 
@@ -166,7 +177,7 @@ myButton3.pack(side = LEFT)    #die Anordnung
 myButton4 = Button(navigation, text="Hauptmenü", command=hauptmenü, bg="#2d2d2d", fg="#e4bc1f", width=70, height=10)         #Hauptmenü Button wurde erstellt
 myButton4.pack(side=LEFT)
 
-myLehrerkürzel = Button(inhalt, text="Lehrerkürzel", command=lehrerkürzel, bg="#2d2d2d", fg="#e4bc1f", width=140, height=rootHeight-10)
+myLehrerkürzel = Button(inhalt, text="Lehrerkürzel", command=lambda: lehrerkürzel(0) , bg="#2d2d2d", fg="#e4bc1f", width=140, height=rootHeight-10)
 myLehrerkürzel.pack(side=LEFT)
 myLehrerkürzel.pack_forget()
 

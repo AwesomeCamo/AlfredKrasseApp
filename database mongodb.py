@@ -54,36 +54,36 @@ post44= {"_id": 43,"Kürzel": "SCA","Name": "Schäfer, Rebekka","Email":"rebekka
 post45= {"_id": 44,"Kürzel": "SCE","Name": "Scheidner, Sven","Email":"sven.scheidner@schulebza.de"}
 post46= {"_id": 45,"Kürzel": "SJK","Name": "Schejok-Gallier, Catherine","Email":"catherine.schejok-gallier@schulebza.de"}
 post47= {"_id": 46,"Kürzel": "SCK","Name": "Schik, Susanne","Email":"susanne.schik@schulebza.de"}
-post47= {"_id": 47,"Kürzel": "SCU","Name": "Schilling, Ulrike Dr.","Email":"ulrike.schilling@schulebza.de"}
-post48= {"_id": 48,"Kürzel": "SH","Name": "Schmidt, Theodor","Email":"theodor.schmidt@schulebza.de"}
-post49= {"_id": 49,"Kürzel": "SCP","Name": "Schuppe, Rosa","Email":"rosa.schuppe@schulebza.de"}
-post50= {"_id": 50,"Kürzel": "SWM","Name": "Schwamm, Anne","Email":"anne.schwamm@schulebza.de"}
-post51= {"_id": 51,"Kürzel": "SCW","Name": "Schwartz, Kirstin","Email":"kirstin.schwartz@schulebza.de"}
-post52= {"_id": 52,"Kürzel": "SCZ","Name": "Schwarz, Gabriele","Email":"gabriele.schwarz@schulebza.de"}
-post53= {"_id": 53,"Kürzel": "SE","Name": "Seringer, Petra","Email":"petra.seringer@schulebza.de"}
-post54= {"_id": 54,"Kürzel": "SPI","Name": "Spicko, Bruno","Email":"bruno.spicko@schulebza.de"}
-post55= {"_id": 55,"Kürzel": "STS","Name": "Stass, Lukas","Email":"lukas.stass@schulebza.de"}
-post56= {"_id": 56,"Kürzel": "STF","Name": "Steinfurth, Thomas","Email":"thomas.steinfurth@schulebza.de"}
-post57= {"_id": 57,"Kürzel": "STC","Name": "Streicher, Ulrike","Email":"ulrike.streicher@schulebza.de"}
-post58= {"_id": 58,"Kürzel": "TR","Name": "Traudt, Werner","Email":"werner.traudt@schulebza.de"}
-post59= {"_id": 59,"Kürzel": "TU","Name": "Tuschner, Stefanie","Email":"stefanie.tuschner@schulebza.de"}
-post60= {"_id": 60,"Kürzel": "VOL","Name": "Vollstedt, Markus","Email":"markus.vollstedt@schulebza.de"}
-post61= {"_id": 61,"Kürzel": "WAS","Name": "Waßmer, Annette","Email":"annet.wassmer@schulebza.de"}
-post62= {"_id": 62,"Kürzel": "WEB","Name": "Weber, Andrea","Email":"andrea.weber@schulebza.de"}
-post63= {"_id": 63,"Kürzel": "WE","Name": "Weiser, Ralf","Email":"ralf.weiser@schulebza.de"}
-post64= {"_id": 64,"Kürzel": "WMR","Name": "Wiemer, Andreas","Email":"andreas.wiemer@schulebza.de"}
-post65= {"_id": 65,"Kürzel": "WI","Name": "Winker, Susanne","Email":"susanne.winker@schulebza.de"}
-post66= {"_id": 66,"Kürzel": "XBA","Name": "Bastian, Jessica","Email":"jessica.bastian@schulebza.de"}
-post67= {"_id": 67,"Kürzel": "XGU","Name": "Güler, Sinem","Email":"sinem.gueler@schulebza.de"}
-post68= {"_id": 68,"Kürzel": "XHE","Name": "Heilmann, Lena","Email":"lena.heilmann@schulebza.de"}
-post69= {"_id": 69,"Kürzel": "XKU","Name": "Kurz, Benedict","Email":"benedict.kurz@schulebza.de"}
-post70= {"_id": 70,"Kürzel": "XLE","Name": "Leim, Johannes","Email":"johannes.leim@schulebza.de"}
-post71= {"_id": 71,"Kürzel": "XSC","Name": "Schummers, Timo","Email":"timo.schummers@schulebza.de"}
+post48= {"_id": 47,"Kürzel": "SCU","Name": "Schilling, Ulrike Dr.","Email":"ulrike.schilling@schulebza.de"}
+post49= {"_id": 48,"Kürzel": "SH","Name": "Schmidt, Theodor","Email":"theodor.schmidt@schulebza.de"}
+post50= {"_id": 49,"Kürzel": "SCP","Name": "Schuppe, Rosa","Email":"rosa.schuppe@schulebza.de"}
+post51= {"_id": 50,"Kürzel": "SWM","Name": "Schwamm, Anne","Email":"anne.schwamm@schulebza.de"}
+post52= {"_id": 51,"Kürzel": "SCW","Name": "Schwartz, Kirstin","Email":"kirstin.schwartz@schulebza.de"}
+post53= {"_id": 52,"Kürzel": "SCZ","Name": "Schwarz, Gabriele","Email":"gabriele.schwarz@schulebza.de"}
+post54= {"_id": 53,"Kürzel": "SE","Name": "Seringer, Petra","Email":"petra.seringer@schulebza.de"}
+post55= {"_id": 54,"Kürzel": "SPI","Name": "Spicko, Bruno","Email":"bruno.spicko@schulebza.de"}
+post56= {"_id": 55,"Kürzel": "STS","Name": "Stass, Lukas","Email":"lukas.stass@schulebza.de"}
+post57= {"_id": 56,"Kürzel": "STF","Name": "Steinfurth, Thomas","Email":"thomas.steinfurth@schulebza.de"}
+post58= {"_id": 57,"Kürzel": "STC","Name": "Streicher, Ulrike","Email":"ulrike.streicher@schulebza.de"}
+post59= {"_id": 58,"Kürzel": "TR","Name": "Traudt, Werner","Email":"werner.traudt@schulebza.de"}
+post60= {"_id": 59,"Kürzel": "TU","Name": "Tuschner, Stefanie","Email":"stefanie.tuschner@schulebza.de"}
+post61= {"_id": 60,"Kürzel": "VOL","Name": "Vollstedt, Markus","Email":"markus.vollstedt@schulebza.de"}
+post62= {"_id": 61,"Kürzel": "WAS","Name": "Waßmer, Annette","Email":"annet.wassmer@schulebza.de"}
+post63= {"_id": 62,"Kürzel": "WEB","Name": "Weber, Andrea","Email":"andrea.weber@schulebza.de"}
+post64= {"_id": 63,"Kürzel": "WE","Name": "Weiser, Ralf","Email":"ralf.weiser@schulebza.de"}
+post65= {"_id": 64,"Kürzel": "WMR","Name": "Wiemer, Andreas","Email":"andreas.wiemer@schulebza.de"}
+post66= {"_id": 65,"Kürzel": "WI","Name": "Winker, Susanne","Email":"susanne.winker@schulebza.de"}
+post67= {"_id": 66,"Kürzel": "XBA","Name": "Bastian, Jessica","Email":"jessica.bastian@schulebza.de"}
+post68= {"_id": 67,"Kürzel": "XGU","Name": "Güler, Sinem","Email":"sinem.gueler@schulebza.de"}
+post69= {"_id": 68,"Kürzel": "XHE","Name": "Heilmann, Lena","Email":"lena.heilmann@schulebza.de"}
+post70= {"_id": 69,"Kürzel": "XKU","Name": "Kurz, Benedict","Email":"benedict.kurz@schulebza.de"}
+post71= {"_id": 70,"Kürzel": "XLE","Name": "Leim, Johannes","Email":"johannes.leim@schulebza.de"}
+post72= {"_id": 71,"Kürzel": "XSC","Name": "Schummers, Timo","Email":"timo.schummers@schulebza.de"}
 
 
 collection1.insert_many([post1,post2,post3,post4,post5,post6,post7,post8,post9,post10,post11,post12,post13,post14,post15,post16,post17,post18,post19,post20,post21,post22,post23,post24,post25,post26,post27,post28,
                          post29,post30,post31,post32,post33,post34,post35,post36,post37,post38,post39,post40,post41,post42,post43,post44,post45,post46,post47,post48,post49,post50,post51,post52,post53,
-                         post54,post55,post56,post57,post58,post59,post60,post61,post62,post63,post64,post65,post66,post67,post68,post69,post70,post71])
+                         post54,post55,post56,post57,post58,post59,post60,post61,post62,post63,post64,post65,post66,post67,post68,post69,post70,post71,post72])
 
 results = collection1.find({})
 
