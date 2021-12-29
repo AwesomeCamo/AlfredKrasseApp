@@ -7,7 +7,6 @@ collection2 = db["Unterricht"]
 collection3 = db["Ausfall"]
 
 collection1.delete_many({})
-post0={"_id":100,"Kürzel": "Kürzel:","Name": "Name:", "Email":"Email:"}
 post1 = {"_id": 0,"Kürzel": "ALL","Name": "Allman, Peter","Email":"allmann@schulebza.de"}
 post2 = {"_id": 1,"Kürzel": "AND","Name": "Andres, Kirsten","Email":"kirsten.andres@schulebza.de"}
 post3 = {"_id": 2,"Kürzel": "BAM","Name": "Baumeister, Birgit","Email":"gitta.baumeister@schulebza.de"}
@@ -82,13 +81,14 @@ post70= {"_id": 70,"Kürzel": "XLE","Name": "Leim, Johannes","Email":"johannes.l
 post71= {"_id": 71,"Kürzel": "XSC","Name": "Schummers, Timo","Email":"timo.schummers@schulebza.de"}
 
 
-collection1.insert_many([post0,post1,post2,post3,post4,post5,post6,post7,post8,post9,post10,post11,post12,post13,post14,post15,post16,post17,post18,post19,post20,post21,post22,post23,post24,post25,post26,post27,post28,
+collection1.insert_many([post1,post2,post3,post4,post5,post6,post7,post8,post9,post10,post11,post12,post13,post14,post15,post16,post17,post18,post19,post20,post21,post22,post23,post24,post25,post26,post27,post28,
                          post29,post30,post31,post32,post33,post34,post35,post36,post37,post38,post39,post40,post41,post42,post43,post44,post45,post46,post47,post48,post49,post50,post51,post52,post53,
                          post54,post55,post56,post57,post58,post59,post60,post61,post62,post63,post64,post65,post66,post67,post68,post69,post70,post71])
 
-results = collection1.find({"Kürzel":"","Name":"", "Email":""})
+results = collection1.find({})
 
-for result in results:
-    print(result["Kürzel"])
-    print(result["Name"])
-    print(result["Email"])
+def datenbanken(übergabe):
+    for result in range(übergabe,übergabe+16):
+
+datenbanken(0)
+

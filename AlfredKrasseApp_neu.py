@@ -10,7 +10,6 @@ root = Tk()
 root.title('Alfred Krasse App')                         #titel name
 root.iconbitmap("./resources/images/HomeIcon.ico")      #Bild (icon oben links)
 root.geometry("1920x1080")                              #die größe der App
-root.resizable(0,0)
 rootHeight = root.winfo_height()                        #die Höhe des Fensters
 rootWidth = root.winfo_width()                          #die Breite des Fensters
 root['background'] = '#FFFEF6' #der Hintergrund
@@ -44,6 +43,18 @@ class Information:
     def __init__(self,Name2,Position):
         self.Name2 = Name2
         self.Position = Position
+def datenbank_ausgabe(anfang):
+    results = collection1.find({})
+    i=1
+    for result in range(anfang, anfang + 15):
+        label1 = Label(frame_grid, text=results[result]["Kürzel"], relief="solid", borderwidth="2", width=93, height=3, anchor=W,bg="#2d2d2d", fg="#e4bc1f")
+        label2 = Label(frame_grid, text=results[result]["Name"], relief="solid", borderwidth="2", width=93, height=3, anchor=W,bg="#2d2d2d", fg="#e4bc1f")
+        label3 = Label(frame_grid, text=results[result]["Email"], relief="solid", borderwidth="2", width=93, height=3, anchor=W,bg="#2d2d2d", fg="#e4bc1f")
+        label1.grid(row=i, column=1, sticky=W)
+        label2.grid(row=i, column=2, sticky=W)
+        label3.grid(row=i, column=3, sticky=W)
+        i += 1
+
 
 def forgetinhalt():
     myEvent.pack_forget()
@@ -91,24 +102,20 @@ def lehrerkürzel():
     forgetinhalt()
     myButton2.config(bg="#7f7f7f")
     frame_grid.pack()
-    results = collection1.find({})
     i=0
-   # Headline = Person("Kürzel","Name","E-Mail")
-    #Dennis = Person("Frey","Dennis Frey","dede0ß3e21328^1@jfasgfiugasfs.com")
-    #Emely = Person("LOOL","LECK MICH","emely.leckmich@gmail.com")
-    for result in results:
-        if i == 0:
-            label1 = Label(frame_grid,text=result["Kürzel"], relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
-            label2 = Label(frame_grid,text=result["Name"], relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
-            label3 = Label(frame_grid,text=result["Email"], relief="solid", borderwidth="2", width=93,height=5, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
-        else:
-            label1 = Label(frame_grid,text=result["Kürzel"],relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
-            label2 = Label(frame_grid,text=result["Name"],relief="solid",borderwidth="2", width=93,height=5,anchor=W, bg="#2d2d2d",fg="#e4bc1f")
-            label3 =  Label(frame_grid,text=result["Email"],relief="solid",borderwidth="2", width=93,height=5, bg="#2d2d2d",fg="#e4bc1f")
-        label1.grid(row=i, column=1,sticky=W)
-        label2.grid(row=i, column=2,sticky=W)
-        label3.grid(row=i, column=3,sticky=W)
-        i+=1
+    x=0
+    label1 = Label(frame_grid, text="Kürzel", relief="solid", borderwidth="2", width=93, height=3,
+                   anchor=CENTER, bg="#2d2d2d", fg="#e4bc1f")
+    label2 = Label(frame_grid, text="Name", relief="solid", borderwidth="2", width=93, height=3, anchor=CENTER,
+                   bg="#2d2d2d", fg="#e4bc1f")
+    label3 = Label(frame_grid, text="Email", relief="solid", borderwidth="2", width=93, height=3, anchor=CENTER,
+                   bg="#2d2d2d", fg="#e4bc1f")
+    label1.grid(row=i, column=1, sticky=W)
+    label2.grid(row=i, column=2, sticky=W)
+    label3.grid(row=i, column=3, sticky=W)
+    datenbank_ausgabe(0+x)
+    x=+16
+
 
 def über_die_Schule():
     forgetinhalt()
