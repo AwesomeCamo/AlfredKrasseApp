@@ -87,14 +87,6 @@ collection1.insert_many([post1,post2,post3,post4,post5,post6,post7,post8,post9,p
 
 results = collection1.find({})
 
-counter = 0
-def count_elements():
-    global counter
-    for i in results:
-        counter+=1
-    print(counter)
-
-count_elements()
 
 
 
