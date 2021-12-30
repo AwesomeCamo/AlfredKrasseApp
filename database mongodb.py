@@ -1,4 +1,4 @@
-from pymongo import MongoClient
+from pymongo import *
 
 cluster = MongoClient("mongodb+srv://Dennis:MHhRui10mongodb@cluster0.aitqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = cluster["Alfred-Krasse-App"]
@@ -87,8 +87,15 @@ collection1.insert_many([post1,post2,post3,post4,post5,post6,post7,post8,post9,p
 
 results = collection1.find({})
 
-def datenbanken(übergabe):
-    for result in range(übergabe,übergabe+16):
+counter = 0
+def count_elements():
+    global counter
+    for i in results:
+        counter+=1
+    print(counter)
 
-datenbanken(0)
+count_elements()
+
+
+
 

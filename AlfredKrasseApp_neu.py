@@ -2,6 +2,7 @@
 from tkinter import *
 from pymongo import MongoClient
 
+seitenzähler = 0
 cluster = MongoClient("mongodb+srv://Dennis:MHhRui10mongodb@cluster0.aitqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = cluster["Alfred-Krasse-App"]
 collection1 = db["Lehrerkürzel"]
@@ -53,6 +54,25 @@ def datenbank_ausgabe(anfang):
         i+=1
 
 
+def add_seitenzähler():
+    global seitenzähler
+    seitenzähler += 1
+
+
+def sub_seitenzähler():
+    global seitenzähler
+    if seitenzähler > 0:
+        seitenzähler -= 1
+
+def forget_for_lehrerkürzel():
+    myEvent.pack_forget()
+    myAusfall.pack_forget()
+    myLehrerkürzel.pack_forget()
+    myInformation.pack_forget()
+    frame_grid.pack_forget()
+    buttonblack()
+    frame_info.pack_forget()
+    frame_info2.pack_forget()
 
 def forgetinhalt():
     myEvent.pack_forget()
