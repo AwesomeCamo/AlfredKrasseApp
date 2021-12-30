@@ -1,3 +1,4 @@
+
 from tkinter import *
 from pymongo import MongoClient
 
@@ -9,9 +10,9 @@ collection3 = db["Ausfall"]
 root = Tk()
 root.title('Alfred Krasse App')                         #titel name
 root.iconbitmap("./resources/images/HomeIcon.ico")      #Bild (icon oben links)
-root.geometry("1902x1080")                              #die größe der App
-rootHeight = root.winfo_height()                        #die Höhe des Fensters
-rootWidth = root.winfo_width()                          #die Breite des Fensters
+rootHeight = root.winfo_screenheight()                        #die Höhe des Fensters
+rootWidth = root.winfo_screenwidth()
+root.geometry("%dx%d+0+0"%(rootWidth,rootHeight))
 root['background'] = '#FFFEF6'                          #der Hintergrund
 db = cluster["Alfred-Krasse-App"]
 collection1 = db["Lehrerkürzel"]
