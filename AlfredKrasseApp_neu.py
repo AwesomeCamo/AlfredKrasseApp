@@ -9,10 +9,10 @@ collection3 = db["Ausfall"]
 root = Tk()
 root.title('Alfred Krasse App')                         #titel name
 root.iconbitmap("./resources/images/HomeIcon.ico")      #Bild (icon oben links)
-root.geometry("1920x1080")                              #die größe der App
+root.geometry("1902x1080")                              #die größe der App
 rootHeight = root.winfo_height()                        #die Höhe des Fensters
 rootWidth = root.winfo_width()                          #die Breite des Fensters
-root['background'] = '#FFFEF6' #der Hintergrund
+root['background'] = '#FFFEF6'                          #der Hintergrund
 db = cluster["Alfred-Krasse-App"]
 collection1 = db["Lehrerkürzel"]
 
@@ -40,7 +40,7 @@ class Information:
         self.Position = Position
 
 def datenbank_ausgabe(anfang):
-    results = collection1.find({"$and":[{"_id":{"$lt":anfang+15}},{"_id":{"$gt":anfang}}]})
+    results = collection1.find({"$and":[{"_id":{"$lt":anfang+14}},{"_id":{"$gt":anfang-1}}]})
     i=1
     for result in results:
         label1 = Label(frame_grid, text=result["Kürzel"], relief="solid", borderwidth="2", width=93, height=3, bg="#2d2d2d", fg="#e4bc1f")
@@ -113,12 +113,17 @@ def lehrerkürzel(seite):
     label1.grid(row=i, column=1, sticky=W)
     label2.grid(row=i, column=2, sticky=W)
     label3.grid(row=i, column=3, sticky=W)
+
     datenbank_ausgabe(seite)
-    button_next = Button(frame_grid, text="Next", command=lambda: [add_seitenzähler(), lehrerkürzel(seitenzähler*16)], bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
+
+    button_next = Button(frame_grid, text="Next", command=lambda: [add_seitenzähler(), lehrerkürzel(seitenzähler*16)],relief="solid",borderwidth=1, bg="#2d2d2d",fg="#e4bc1f",width=93,height=7,anchor=CENTER)
     button_next.grid(row=16, column=3,sticky=W)
 
-    button_back = Button(frame_grid,text="Back",command=lambda:[sub_seitenzähler(),lehrerkürzel(seitenzähler*16)],bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
+    button_back = Button(frame_grid,text="Back",command=lambda:[sub_seitenzähler(),lehrerkürzel(seitenzähler*16)],relief="solid",borderwidth=1,bg="#2d2d2d",fg="#e4bc1f",width=93,height=7,anchor=CENTER)
     button_back.grid(row=16, column=1,sticky=W)
+
+    seite_anzahl = Label(frame_grid, text="Seite: " + " " + str(seitenzähler+1), width=93, height=7,borderwidth=2,bg="#2d2d2d", fg="#e4bc1f",anchor=CENTER)
+    seite_anzahl.grid(row=16, column=2,sticky=W)
 
 def über_die_Schule():
     forgetinhalt()
@@ -151,6 +156,7 @@ def über_die_Schule():
 
     anschrift = Label(frame_info2,text="Lessingstraße 24, 76887 Bad Bergzabern", relief="solid", borderwidth="2",height=12, width=280, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
     anschrift.config(font=("Monteserrat", 9))
+
     telefon = Label(frame_info2,text="06343-9344-0", relief="solid", borderwidth="2", width=280,height=12, anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
     telefon.config(font=("Monteserrat", 9))
 
