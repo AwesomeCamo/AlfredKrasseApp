@@ -1,4 +1,3 @@
-
 from tkinter import *
 from pymongo import MongoClient
 
@@ -46,17 +45,37 @@ frame_inhalt_lehrerkürzel = Frame(frame_parent_bottom,width=rootWidth//2,height
 frame_inhalt_lehrerkürzel.grid(row=1,column=1)
 frame_inhalt_lehrerkürzel.grid_forget()
 
-frame_inhalt_lehrerkürzel_left = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_lehrerkürzel_left.grid(row=1,column=1)
-frame_inhalt_lehrerkürzel_left.grid_forget()
-
-frame_inhalt_lehrerkürzel_right = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_lehrerkürzel_right.grid(row=1,column=2)
-frame_inhalt_lehrerkürzel_right.grid_forget()
+frame_inhalt_lehrerkürzel_tabelle = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
+frame_inhalt_lehrerkürzel_tabelle.grid()
+frame_inhalt_lehrerkürzel_tabelle.grid_forget()
 
 frame_inhalt_über_schule = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
 frame_inhalt_über_schule.grid(row=1,column=2)
 frame_inhalt_über_schule.grid_forget()
+
+frame_inhalt_über_schule_left = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
+frame_inhalt_über_schule_left.grid(row=1,column=1)
+frame_inhalt_über_schule_left.grid_forget()
+
+frame_inhalt_über_schule_right = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
+frame_inhalt_über_schule_right.grid(row=1,column=1)
+frame_inhalt_über_schule_right.grid_forget()
+
+frame_event_button = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
+frame_event_button.grid()
+frame_event_button.grid_forget()
+
+frame_inhalt_event_left = Frame(frame_event_button,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
+frame_inhalt_event_left.grid(row=0,column=0)
+frame_inhalt_event_left.grid_forget()
+
+frame_inhalt_event_right = Frame(frame_event_button,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
+frame_inhalt_event_right.grid(row=0,column=1)
+frame_inhalt_event_right.grid_forget()
+
+frame_ausfall_button = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
+frame_ausfall_button.grid()
+frame_ausfall_button.grid_forget()
 
 frame_grid = Frame(root)
 frame_grid.grid()
@@ -68,17 +87,66 @@ class Information:
         self.Position = Position
 
 def datenbank_ausgabe(anfang):
-    results = collection1.find({"$and":[{"_id":{"$lt":anfang+14}},{"_id":{"$gt":anfang-1}}]})
+    results = collection1.find({"$and":[{"_id":{"$lt":anfang+12}},{"_id":{"$gt":anfang-1}}]})
     i=1
     for result in results:
-        label1 = Label(frame_grid, text=result["Kürzel"], relief="solid", borderwidth="2", width=93, height=3, bg="#2d2d2d", fg="#e4bc1f")
-        label2 = Label(frame_grid, text=result["Name"], relief="solid", borderwidth="2", width=93, height=3,bg="#2d2d2d", fg="#e4bc1f")
-        label3 = Label(frame_grid, text=result["Email"], relief="solid", borderwidth="2", width=93, height=3,bg="#2d2d2d", fg="#e4bc1f")
+        label1 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Kürzel"], relief="solid", borderwidth="2", width=90, height=3, bg="#2d2d2d", fg="#e4bc1f")
+        label2 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Name"], relief="solid", borderwidth="2", width=90, height=3,bg="#2d2d2d", fg="#e4bc1f")
+        label3 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Email"], relief="solid", borderwidth="2", width=90, height=3,bg="#2d2d2d", fg="#e4bc1f")
         label1.grid(row=i, column=1, sticky=W)
         label2.grid(row=i, column=2, sticky=W)
         label3.grid(row=i, column=3, sticky=W)
         i+=1
 
+def ausfall_vertretung():
+    forgetinhalt()
+    frame_ausfall_button.grid()
+
+def event():
+    forgetinhalt()
+    frame_event_button.grid()
+    frame_inhalt_event_right.grid(column=1)
+    frame_inhalt_event_left.grid(column=0)
+
+    label_Gurs = Label(frame_inhalt_event_left, text=" Gurs 1940 - Ausstellung (KLI) ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
+    label_Gurs.config(font=("Monteserrat",16))
+    label_Gurs.place(x=0,y=0,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+
+    label_Gurs_datum = Label(frame_inhalt_event_right, text=" 3.12.2021 - 20.1.2022 ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
+    label_Gurs_datum.config(font=("Monteserrat",16))
+    label_Gurs_datum.place(x=0,y=54,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+
+    label_Abitur = Label(frame_inhalt_event_left, text=" MSS13 - Schriftliches - Abitur (SCE)  ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_Abitur.config(font=("Monteserrat", 16))
+    label_Abitur.place(x=0,y=54*2,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+
+    label_Abitur_datum = Label(frame_inhalt_event_right, text=" 5.1.2022 - 19.1.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_Abitur_datum.config(font=("Monteserrat", 16))
+    label_Abitur_datum.place(x=0,y=54*2,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+
+    label_Berufsorientierung = Label(frame_inhalt_event_left, text=" Berufsorientierung - Klassenstufe 9   ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_Berufsorientierung.config(font=("Monteserrat", 16))
+    label_Berufsorientierung.place(x=0,y=54*3,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+
+    label_Berufsorientierung_datum = Label(frame_inhalt_event_right, text=" 25.1.2022 - 26.1.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_Berufsorientierung_datum.config(font=("Monteserrat", 16))
+    label_Berufsorientierung_datum.place(x=0,y=54*3,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+
+    label_halbjahreszeugnis = Label(frame_inhalt_event_left, text=" Ausgabe - Halbjahreszeugnis ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_halbjahreszeugnis.config(font=("Monteserrat", 16))
+    label_halbjahreszeugnis.place(x=0,y=54*4,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+
+    label_halbjahreszeugnis_datum = Label(frame_inhalt_event_right, text=" 28.1.2022 ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_halbjahreszeugnis_datum.config(font=("Monteserrat", 16))
+    label_halbjahreszeugnis_datum.place(x=0,y=54*4,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+
+    label_winterferien = Label(frame_inhalt_event_left, text=" Winterferien ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_winterferien.config(font=("Monteserrat", 16))
+    label_winterferien.place(x=0,y=54*5,width=rootWidth//2,height=170)
+
+    label_winterferien_datum = Label(frame_inhalt_event_right, text=" 21.2.2022 - 25.2.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_winterferien_datum.config(font=("Monteserrat", 16))
+    label_winterferien_datum.place(x=0,y=54*5,width=rootWidth//2,height=170)
 
 def add_seitenzähler():
     global seitenzähler
@@ -92,10 +160,21 @@ def sub_seitenzähler():
 
 def forget_for_lehrerkürzel():
     myEvent.place_forget()
+    frame_inhalt_event_right.grid_forget()
+    frame_inhalt_event_left.grid_forget()
     myAusfall.place_forget()
+    frame_event_button.grid_forget()
+    frame_ausfall_button.grid_forget()
+    frame_event_button.grid_forget()
     myLehrerkürzel.place_forget()
+    frame_inhalt_über_schule_left.grid_forget()
+    frame_inhalt_über_schule_right.grid_forget()
     myInformation.place_forget()
     frame_grid.place_forget()
+    frame_inhalt_ausfall.grid_forget()
+    frame_inhalt_event.grid_forget()
+    frame_inhalt_über_schule.grid_forget()
+    frame_inhalt_lehrerkürzel.grid_forget()
     buttonblack()
     for child in frame_inhalt_lehrerkürzel.winfo_children():
         child.place_forget()
@@ -111,11 +190,17 @@ def forget_for_lehrerkürzel():
 
 def forgetinhalt():
     myEvent.place_forget()
+    frame_event_button.grid_forget()
+    frame_inhalt_event_right.grid_forget()
+    frame_inhalt_event_left.grid_forget()
+    frame_ausfall_button.grid_forget()
+    frame_event_button.grid_forget()
+    frame_inhalt_lehrerkürzel_tabelle.grid_forget()
+    frame_inhalt_über_schule_left.grid_forget()
+    frame_inhalt_über_schule_right.grid_forget()
     myAusfall.place_forget()
     myLehrerkürzel.place_forget()
     myInformation.place_forget()
-    frame_inhalt_lehrerkürzel_right.grid_forget()
-    frame_inhalt_lehrerkürzel_left.grid_forget()
     frame_grid.place_forget()
     for child in frame_inhalt_lehrerkürzel.winfo_children():
         child.place_forget()
@@ -167,22 +252,17 @@ def persönliche_daten():
     forgetinhalt()
     myButton3.config(bg="#7f7f7f")
 
-def event():
-    forgetinhalt()
-
-def ausfall():
-    forgetinhalt()
-
 def lehrerkürzel(seite):
     forget_for_lehrerkürzel()
     myButton2.config(bg="#7f7f7f")
-    frame_grid.place()
-    for child in frame_grid.winfo_children():
+    frame_inhalt_lehrerkürzel_tabelle
+    frame_inhalt_lehrerkürzel_tabelle.grid()
+    for child in frame_inhalt_lehrerkürzel_tabelle.winfo_children():
         child.destroy()
     i=0
-    label1 = Label(frame_grid, text="Kürzel", relief="solid", borderwidth="2", width=93, height=3,anchor=CENTER, bg="#2d2d2d", fg="#e4bc1f")
-    label2 = Label(frame_grid, text="Name", relief="solid", borderwidth="2", width=93, height=3, anchor=CENTER,bg="#2d2d2d", fg="#e4bc1f")
-    label3 = Label(frame_grid, text="Email", relief="solid", borderwidth="2", width=93, height=3, anchor=CENTER,bg="#2d2d2d", fg="#e4bc1f")
+    label1 = Label(frame_inhalt_lehrerkürzel_tabelle, text="Kürzel", relief="solid", borderwidth="2", width=90, height=3,anchor=CENTER, bg="#2d2d2d", fg="#e4bc1f")
+    label2 = Label(frame_inhalt_lehrerkürzel_tabelle, text="Name", relief="solid", borderwidth="2", width=90, height=3, anchor=CENTER,bg="#2d2d2d", fg="#e4bc1f")
+    label3 = Label(frame_inhalt_lehrerkürzel_tabelle, text="Email", relief="solid", borderwidth="2", width=90, height=3, anchor=CENTER,bg="#2d2d2d", fg="#e4bc1f")
 
     label1.grid(row=i, column=1, sticky=W)
     label2.grid(row=i, column=2, sticky=W)
@@ -190,19 +270,19 @@ def lehrerkürzel(seite):
 
     datenbank_ausgabe(seite)
 
-    button_next = Button(frame_grid, text="Next", command=lambda: [add_seitenzähler(), lehrerkürzel(seitenzähler*16)],relief="solid",borderwidth=1, bg="#2d2d2d",fg="#e4bc1f",width=93,height=7,anchor=CENTER)
+    button_next = Button(frame_inhalt_lehrerkürzel_tabelle, text="Next", command=lambda: [add_seitenzähler(), lehrerkürzel(seitenzähler*16)],relief="solid",borderwidth=1, bg="#2d2d2d",fg="#e4bc1f",width=90,height=7,anchor=CENTER)
     button_next.grid(row=16, column=3,sticky=W)
 
-    button_back = Button(frame_grid,text="Back",command=lambda:[sub_seitenzähler(),lehrerkürzel(seitenzähler*16)],relief="solid",borderwidth=1,bg="#2d2d2d",fg="#e4bc1f",width=93,height=7,anchor=CENTER)
+    button_back = Button(frame_inhalt_lehrerkürzel_tabelle,text="Back",command=lambda:[sub_seitenzähler(),lehrerkürzel(seitenzähler*16)],relief="solid",borderwidth=1,bg="#2d2d2d",fg="#e4bc1f",width=90,height=7,anchor=CENTER)
     button_back.grid(row=16, column=1,sticky=W)
 
-    seite_anzahl = Label(frame_grid, text="Seite: " + " " + str(seitenzähler+1), width=93, height=7,borderwidth=2,bg="#2d2d2d", fg="#e4bc1f",anchor=CENTER)
+    seite_anzahl = Label(frame_inhalt_lehrerkürzel_tabelle, text="Seite: " + " " + str(seitenzähler+1), width=90, height=7,borderwidth=2,bg="#2d2d2d", fg="#e4bc1f",anchor=CENTER)
     seite_anzahl.grid(row=16, column=2,sticky=W)
 
 def über_die_Schule():
     forgetinhalt()
-    frame_inhalt_lehrerkürzel_right.grid(row=1,column=2)
-    frame_inhalt_lehrerkürzel_left.grid(row=1,column=1)
+    frame_inhalt_über_schule_right.grid(row=1,column=2)
+    frame_inhalt_über_schule_left.grid(row=1,column=1)
     myButton2.config(bg="#7f7f7f")
     x=0
     Headline = Information("Name", "Position")
@@ -215,15 +295,15 @@ def über_die_Schule():
     daten = [Headline,Allmann,Schwamm,Mohr,Klein,Spada,adress]
     for name in daten:
         if x == 0:
-            label1 = Label(frame_inhalt_lehrerkürzel_left,text=name.Name2, relief="solid", borderwidth="2", anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
-            label1.config(font=("Monteserrat", 9,"bold italic"))
-            label2 = Label(frame_inhalt_lehrerkürzel_right,text=name.Position, relief="solid", borderwidth="2",  anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
-            label2.config(font=("Monteserrat", 9,"bold italic"))
+            label1 = Label(frame_inhalt_über_schule_left,text=name.Name2, relief="solid", borderwidth="2", anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
+            label1.config(font=("Monteserrat", 18,"bold italic"))
+            label2 = Label(frame_inhalt_über_schule_right,text=name.Position, relief="solid", borderwidth="2",  anchor=CENTER, bg="#2d2d2d",fg="#e4bc1f")
+            label2.config(font=("Monteserrat", 18,"bold italic"))
         else:
-            label1 = Label(frame_inhalt_lehrerkürzel_left, text=name.Name2, relief="solid", borderwidth="2", anchor=W, bg="#2d2d2d",fg="#e4bc1f")
-            label1.config(font=("Monteserrat", 9))
-            label2 = Label(frame_inhalt_lehrerkürzel_right, text=name.Position, relief="solid", borderwidth="2", anchor=W, bg="#2d2d2d",fg="#e4bc1f")
-            label2.config(font=("Monteserrat", 9))
+            label1 = Label(frame_inhalt_über_schule_left, text=name.Name2, relief="solid", borderwidth="2", anchor=W, bg="#2d2d2d",fg="#e4bc1f")
+            label1.config(font=("Monteserrat", 18))
+            label2 = Label(frame_inhalt_über_schule_right, text=name.Position, relief="solid", borderwidth="2", anchor=W, bg="#2d2d2d",fg="#e4bc1f")
+            label2.config(font=("Monteserrat", 18))
 
         label1.place(y=x*(rootHeight-rootHeight//4)//8-1,height=(rootHeight-rootHeight//4)//7,width=rootWidth//2)
         label2.place(y=x*(rootHeight-rootHeight//4)//8-1,height=(rootHeight-rootHeight//4)//7,width=rootWidth//2)
@@ -268,7 +348,7 @@ myEvent = Button(frame_inhalt_event, text="Event",command=event, bg="#2d2d2d",fg
 myEvent.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)
 myEvent.config(font=("Monteserrat",20))
 
-myAusfall = Button(frame_inhalt_ausfall, text="Ausfall/Vertretung",command=ausfall, bg="#2d2d2d",fg="#e4bc1f")            #Ausfall/Vertretung Button wurde erstellt
+myAusfall = Button(frame_inhalt_ausfall, text="Ausfall/Vertretung",command=ausfall_vertretung, bg="#2d2d2d",fg="#e4bc1f")            #Ausfall/Vertretung Button wurde erstellt
 myAusfall.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)
 myAusfall.config(font=("Monteserrat",20))
 
