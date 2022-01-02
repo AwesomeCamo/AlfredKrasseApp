@@ -54,28 +54,24 @@ frame_inhalt_über_schule.grid(row=1,column=2)
 frame_inhalt_über_schule.grid_forget()
 
 frame_inhalt_über_schule_left = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_über_schule_left.grid(row=1,column=1)
+frame_inhalt_über_schule_left.grid()
 frame_inhalt_über_schule_left.grid_forget()
 
 frame_inhalt_über_schule_right = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_über_schule_right.grid(row=1,column=1)
+frame_inhalt_über_schule_right.grid()
 frame_inhalt_über_schule_right.grid_forget()
 
 frame_event_button = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
 frame_event_button.grid()
 frame_event_button.grid_forget()
 
-frame_inhalt_event_left = Frame(frame_event_button,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_event_left.grid(row=0,column=0)
-frame_inhalt_event_left.grid_forget()
-
-frame_inhalt_event_right = Frame(frame_event_button,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_event_right.grid(row=0,column=1)
-frame_inhalt_event_right.grid_forget()
-
 frame_ausfall_button = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
 frame_ausfall_button.grid()
 frame_ausfall_button.grid_forget()
+
+frame_pers_daten = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
+frame_pers_daten.grid()
+frame_pers_daten.grid_forget()
 
 frame_grid = Frame(root)
 frame_grid.grid()
@@ -102,51 +98,97 @@ def ausfall_vertretung():
     forgetinhalt()
     frame_ausfall_button.grid()
 
+    label_ausfall1 = Label(frame_ausfall_button,text=" Ausfallender Lehrer: ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
+    label_ausfall1.config(font=("Monteserrat",18))
+    label_ausfall1.place(x=0,y=0,width=rootWidth//3,height=120)
+
+    label_ausfall_1 = Label(frame_ausfall_button, text=" Vertretung/Entfall: ", relief="solid", borderwidth="2",bg="#2d2d2d", fg="#e4bc1f")
+    label_ausfall_1.config(font=("Monteserrat",18))
+    label_ausfall_1.place(x=640, y=0, width=rootWidth // 3, height=120)
+
+    label_ausfall__1 = Label(frame_ausfall_button, text=" Vertretender Lehrer: ", relief="solid", borderwidth="2",bg="#2d2d2d", fg="#e4bc1f")
+    label_ausfall__1.config(font=("Monteserrat",18))
+    label_ausfall__1.place(x=1280, y=0, width=rootWidth // 3, height=120)
+
+    label_ausfall2 = Label(frame_ausfall_button, text=" Herr Vollstedt (MSS12) ", relief="solid", borderwidth="2",bg="#2d2d2d", fg="#e4bc1f")
+    label_ausfall2.config(font=("Monteserrat", 16))
+    label_ausfall2.place(x=0, y=120, width=rootWidth // 3, height=120)
+
+    label_ausfall_2 = Label(frame_ausfall_button, text=" Entfällt ", relief="solid", borderwidth="2",bg="#2d2d2d", fg="#e4bc1f")
+    label_ausfall_2.config(font=("Monteserrat", 16))
+    label_ausfall_2.place(x=640, y=120, width=rootWidth // 3, height=120)
+
+    label_ausfall__2 = Label(frame_ausfall_button, text=" / ", relief="solid", borderwidth="2",bg="#2d2d2d", fg="#e4bc1f")
+    label_ausfall__2.config(font=("Monteserrat", 16))
+    label_ausfall__2.place(x=1280, y=120, width=rootWidth // 3, height=120)
+
+    label_ausfall3 = Label(frame_ausfall_button, text=" Herr Meißner (MSS12) ", relief="solid", borderwidth="2", bg="#2d2d2d",fg="#e4bc1f")
+    label_ausfall3.config(font=("Monteserrat", 16))
+    label_ausfall3.place(x=0, y=120*2, width=rootWidth // 3, height=120)
+
+    label_ausfall_3 = Label(frame_ausfall_button, text=" Vertretung ", relief="solid", borderwidth="2", bg="#2d2d2d",fg="#e4bc1f")
+    label_ausfall_3.config(font=("Monteserrat", 16))
+    label_ausfall_3.place(x=640, y=120*2, width=rootWidth // 3, height=120)
+
+    label_ausfall__3 = Label(frame_ausfall_button, text=" Herr Müller ", relief="solid", borderwidth="2", bg="#2d2d2d",fg="#e4bc1f")
+    label_ausfall__3.config(font=("Monteserrat", 16))
+    label_ausfall__3.place(x=1280, y=120*2, width=rootWidth // 3, height=120)
+
+    label_ausfall3 = Label(frame_ausfall_button, text=" Frau Schäfer (MSS12) ", relief="solid", borderwidth="2",bg="#2d2d2d", fg="#e4bc1f")
+    label_ausfall3.config(font=("Monteserrat", 16))
+    label_ausfall3.place(x=0, y=120 * 3, width=rootWidth // 3, height=120)
+
+    label_ausfall_3 = Label(frame_ausfall_button, text=" Entfällt ", relief="solid", borderwidth="2", bg="#2d2d2d",fg="#e4bc1f")
+    label_ausfall_3.config(font=("Monteserrat", 16))
+    label_ausfall_3.place(x=640, y=120 * 3, width=rootWidth // 3, height=120)
+
+    label_ausfall__3 = Label(frame_ausfall_button, text=" / ", relief="solid", borderwidth="2", bg="#2d2d2d",fg="#e4bc1f")
+    label_ausfall__3.config(font=("Monteserrat", 16))
+    label_ausfall__3.place(x=1280, y=120 * 3, width=rootWidth // 3, height=120)
+
 def event():
     forgetinhalt()
     frame_event_button.grid()
-    frame_inhalt_event_right.grid(column=1)
-    frame_inhalt_event_left.grid(column=0)
 
-    label_Gurs = Label(frame_inhalt_event_left, text=" Gurs 1940 - Ausstellung (KLI) ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
+    label_Gurs = Label(frame_event_button, text=" Gurs 1940 - Ausstellung (KLI) ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
     label_Gurs.config(font=("Monteserrat",16))
-    label_Gurs.place(x=0,y=0,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+    label_Gurs.place(x=0,y=0,width=960,height=158)
 
-    label_Gurs_datum = Label(frame_inhalt_event_right, text=" 3.12.2021 - 20.1.2022 ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
+    label_Gurs_datum = Label(frame_event_button, text=" 3.12.2021 - 20.1.2022 ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
     label_Gurs_datum.config(font=("Monteserrat",16))
-    label_Gurs_datum.place(x=0,y=54,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+    label_Gurs_datum.place(x=960,y=0,width=960,height=158)
 
-    label_Abitur = Label(frame_inhalt_event_left, text=" MSS13 - Schriftliches - Abitur (SCE)  ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_Abitur = Label(frame_event_button, text=" MSS13 - Schriftliches - Abitur (SCE)  ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
     label_Abitur.config(font=("Monteserrat", 16))
-    label_Abitur.place(x=0,y=54*2,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+    label_Abitur.place(x=0,y=158,width=960,height=158)
 
-    label_Abitur_datum = Label(frame_inhalt_event_right, text=" 5.1.2022 - 19.1.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_Abitur_datum = Label(frame_event_button, text=" 5.1.2022 - 19.1.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
     label_Abitur_datum.config(font=("Monteserrat", 16))
-    label_Abitur_datum.place(x=0,y=54*2,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+    label_Abitur_datum.place(x=960,y=158,width=960,height=158)
 
-    label_Berufsorientierung = Label(frame_inhalt_event_left, text=" Berufsorientierung - Klassenstufe 9   ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_Berufsorientierung = Label(frame_event_button, text=" Berufsorientierung - Klassenstufe 9   ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
     label_Berufsorientierung.config(font=("Monteserrat", 16))
-    label_Berufsorientierung.place(x=0,y=54*3,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+    label_Berufsorientierung.place(x=0,y=158*2,width=960,height=158)
 
-    label_Berufsorientierung_datum = Label(frame_inhalt_event_right, text=" 25.1.2022 - 26.1.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_Berufsorientierung_datum = Label(frame_event_button, text=" 25.1.2022 - 26.1.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
     label_Berufsorientierung_datum.config(font=("Monteserrat", 16))
-    label_Berufsorientierung_datum.place(x=0,y=54*3,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+    label_Berufsorientierung_datum.place(x=960,y=158*2,width=960,height=158)
 
-    label_halbjahreszeugnis = Label(frame_inhalt_event_left, text=" Ausgabe - Halbjahreszeugnis ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_halbjahreszeugnis = Label(frame_event_button, text=" Ausgabe - Halbjahreszeugnis ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
     label_halbjahreszeugnis.config(font=("Monteserrat", 16))
-    label_halbjahreszeugnis.place(x=0,y=54*4,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+    label_halbjahreszeugnis.place(x=0,y=158*3,width=960,height=158)
 
-    label_halbjahreszeugnis_datum = Label(frame_inhalt_event_right, text=" 28.1.2022 ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_halbjahreszeugnis_datum = Label(frame_event_button, text=" 28.1.2022 ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
     label_halbjahreszeugnis_datum.config(font=("Monteserrat", 16))
-    label_halbjahreszeugnis_datum.place(x=0,y=54*4,width=rootWidth//2,height=(rootHeight-rootHeight//4)//5)
+    label_halbjahreszeugnis_datum.place(x=960,y=158*3,width=960,height=158)
 
-    label_winterferien = Label(frame_inhalt_event_left, text=" Winterferien ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_winterferien = Label(frame_event_button, text=" Winterferien ", relief="solid",borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
     label_winterferien.config(font=("Monteserrat", 16))
-    label_winterferien.place(x=0,y=54*5,width=rootWidth//2,height=170)
+    label_winterferien.place(x=0,y=158*4,width=960,height=158)
 
-    label_winterferien_datum = Label(frame_inhalt_event_right, text=" 21.2.2022 - 25.2.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
+    label_winterferien_datum = Label(frame_event_button, text=" 21.2.2022 - 25.2.2022 ", relief="solid", borderwidth="2", bg="#2d2d2d", fg="#e4bc1f")
     label_winterferien_datum.config(font=("Monteserrat", 16))
-    label_winterferien_datum.place(x=0,y=54*5,width=rootWidth//2,height=170)
+    label_winterferien_datum.place(x=960,y=158*4,width=960,height=158)
 
 def add_seitenzähler():
     global seitenzähler
@@ -160,8 +202,6 @@ def sub_seitenzähler():
 
 def forget_for_lehrerkürzel():
     myEvent.place_forget()
-    frame_inhalt_event_right.grid_forget()
-    frame_inhalt_event_left.grid_forget()
     myAusfall.place_forget()
     frame_event_button.grid_forget()
     frame_ausfall_button.grid_forget()
@@ -191,8 +231,7 @@ def forget_for_lehrerkürzel():
 def forgetinhalt():
     myEvent.place_forget()
     frame_event_button.grid_forget()
-    frame_inhalt_event_right.grid_forget()
-    frame_inhalt_event_left.grid_forget()
+    frame_pers_daten.grid_forget()
     frame_ausfall_button.grid_forget()
     frame_event_button.grid_forget()
     frame_inhalt_lehrerkürzel_tabelle.grid_forget()
@@ -248,9 +287,18 @@ def schule():
     myInformation.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)
     myButton2.config(bg="#7f7f7f")
 
+def read_input_field1():
+    current_input1 = input_field1.get()
+    print(current_input1)
+
 def persönliche_daten():
     forgetinhalt()
     myButton3.config(bg="#7f7f7f")
+    frame_pers_daten.grid()
+    input_field1.place(x=0, y=0, width=rootWidth // 4, height=140)
+    ok_button1.place(x=480, y=0, width=rootWidth // 4, height=140)
+    input_field2.place(x=0, y=140, width=rootWidth // 4, height=140)
+    input_field3.place(x=0, y=140 * 2, width=rootWidth // 4, height=140)
 
 def lehrerkürzel(seite):
     forget_for_lehrerkürzel()
@@ -309,6 +357,21 @@ def über_die_Schule():
         label2.place(y=x*(rootHeight-rootHeight//4)//8-1,height=(rootHeight-rootHeight//4)//7,width=rootWidth//2)
         x+=1
 
+input_field1 = Entry(frame_pers_daten,bg="#2d2d2d",fg="#e4bc1f")
+input_field1.place(x=0,y=0,width=rootWidth//4,height=140)
+input_field1.place_forget()
+
+ok_button1 = Button(frame_pers_daten,text="Bestätigen",bg="#2d2d2d",fg="#e4bc1f",command=read_input_field1)
+ok_button1.place(x=480,y=0,width=rootWidth//4,height=140)
+ok_button1.place_forget()
+
+input_field2 = Entry(frame_pers_daten, bg="#2d2d2d", fg="#e4bc1f")
+input_field2.place(x=0, y=140, width=rootWidth // 4, height=140)
+input_field2.place_forget()
+
+input_field3 = Entry(frame_pers_daten, bg="#2d2d2d", fg="#e4bc1f")
+input_field3.place(x=0, y=140*2, width=rootWidth // 4, height=140)
+input_field3.place_forget()
 
 button_back = Button(frame_grid,text="Back",command=lambda:[sub_seitenzähler(),lehrerkürzel(seitenzähler*16)],bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
 button_back.grid(row=16, column=1,sticky=W)
