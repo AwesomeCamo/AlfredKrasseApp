@@ -1,5 +1,7 @@
 from tkinter import *
 from pymongo import MongoClient
+import matplotlib.pyplot as plt
+import numpy as np
 
 seitenzähler = 0 #Seite wird gezählt und definiert
 cluster = MongoClient("mongodb+srv://Dennis:MHhRui10mongodb@cluster0.aitqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority") #Datenbankaufruf
@@ -286,17 +288,69 @@ def schule():       #Funktion für Button Schule wird erstellt
     myButton2.config(bg="#7f7f7f")
 
 def read_input_field1():
-    current_input1 = input_field1.get()
-    print(current_input1)
+    global current_input1
+    current_input1 = float(input_field1.get())
+
+def read_input_field2():
+    global current_input2
+    current_input2 = float(input_field2.get())
+
+def read_input_field3():
+    global current_input3
+    current_input3 = float(input_field3.get())
+
+def read_input_field4():
+    global current_input4
+    current_input4 = float(input_field4.get())
+
+def read_input_field5():
+    global current_input5
+    current_input5 = float(input_field5.get())
+
+def graph_per_daten():
+    read_input_field1()
+    read_input_field2()
+    read_input_field3()
+    read_input_field4()
+    read_input_field5()
+    summe = sum([current_input1, current_input2, current_input3,current_input4,current_input5])
+    anzahl = len([current_input1, current_input2, current_input3,current_input4,current_input5])
+    wert = summe / anzahl
+    x1 = 1
+    y1 = wert
+    x2 = [1,2,3,4,5]
+    y2 = [current_input1, current_input2, current_input3,current_input4,current_input5]
+
+    plt.bar(x2, y2, label="Noten Anzeige")
+    plt.title("Noten Anzeige")
+    plt.xlabel("Anzahl der Noten")
+    plt.ylabel("Noten in MSS-Punkte")
+    plt.tight_layout()
+    plt.show()
+
+    plt.bar(x1, y1, label="Noten Durchschnitt")
+    plt.title("Noten Durchschnitt")
+    plt.ylabel("Noten in MSS-Punkte (Durchschnitt)")
+    plt.tight_layout()
+    plt.show()
+
+
 
 def persönliche_daten():
     forgetinhalt()
     myButton3.config(bg="#7f7f7f")
     frame_pers_daten.grid()
-    input_field1.place(x=0, y=0, width=rootWidth // 4, height=140)
-    ok_button1.place(x=480, y=0, width=rootWidth // 4, height=140)
-    input_field2.place(x=0, y=140, width=rootWidth // 4, height=140)
-    input_field3.place(x=0, y=140 * 2, width=rootWidth // 4, height=140)
+    input_field1.place(x=0, y=0, width=rootWidth // 2, height=140)
+    input_field1.config(font=("Monteserrat", 16))
+    input_field2.place(x=0, y=140, width=rootWidth // 2, height=140)
+    input_field2.config(font=("Monteserrat", 16))
+    input_field3.place(x=0, y=140 * 2, width=rootWidth // 2, height=140)
+    input_field3.config(font=("Monteserrat", 16))
+    input_field4.place(x=0, y=140 * 3, width=rootWidth // 2, height=140)
+    input_field4.config(font=("Monteserrat", 16))
+    input_field5.place(x=0, y=140 * 4, width=rootWidth // 2, height=140)
+    input_field5.config(font=("Monteserrat", 16))
+    graph_visualisieren.place(x=960, y=140*3)
 
 def lehrerkürzel(seite):
     forget_for_lehrerkürzel()
@@ -356,20 +410,29 @@ def über_die_Schule():
         x+=1
 
 input_field1 = Entry(frame_pers_daten,bg="#2d2d2d",fg="#e4bc1f")
-input_field1.place(x=0,y=0,width=rootWidth//4,height=140)
+input_field1.place(x=0,y=0,width=rootWidth//2,height=140)
 input_field1.place_forget()
 
-ok_button1 = Button(frame_pers_daten,text="Bestätigen",bg="#2d2d2d",fg="#e4bc1f",command=read_input_field1)
-ok_button1.place(x=480,y=0,width=rootWidth//4,height=140)
-ok_button1.place_forget()
-
 input_field2 = Entry(frame_pers_daten, bg="#2d2d2d", fg="#e4bc1f")
-input_field2.place(x=0, y=140, width=rootWidth // 4, height=140)
+input_field2.place(x=0, y=140, width=rootWidth // 2, height=140)
 input_field2.place_forget()
 
 input_field3 = Entry(frame_pers_daten, bg="#2d2d2d", fg="#e4bc1f")
-input_field3.place(x=0, y=140*2, width=rootWidth // 4, height=140)
+input_field3.place(x=0, y=140*2, width=rootWidth // 2, height=140)
 input_field3.place_forget()
+
+input_field4 = Entry(frame_pers_daten, bg="#2d2d2d", fg="#e4bc1f")
+input_field4.place(x=0, y=140*3, width=rootWidth // 2, height=140)
+input_field4.place_forget()
+
+input_field5 = Entry(frame_pers_daten, bg="#2d2d2d", fg="#e4bc1f")
+input_field5.place(x=0, y=140*4, width=rootWidth // 2, height=140)
+input_field5.place_forget()
+
+graph_visualisieren = Button(frame_pers_daten,bg="#2d2d2d", fg="#e4bc1f",text="Visualisiere deinen Graphen!",command=graph_per_daten,width=40,height=11)
+graph_visualisieren.place(x=1000,y=140*3)
+graph_visualisieren.config(font=("Monteserrat", 16))
+graph_visualisieren.place_forget()
 
 button_back = Button(frame_grid,text="Back",command=lambda:[sub_seitenzähler(),lehrerkürzel(seitenzähler*16)],bg="#2d2d2d",fg="#e4bc1f",width=70,height=10)
 button_back.grid(row=16, column=1,sticky=W)
