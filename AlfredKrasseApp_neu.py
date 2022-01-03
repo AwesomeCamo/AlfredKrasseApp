@@ -1,108 +1,106 @@
 from tkinter import *
 from pymongo import MongoClient
 
-seitenzähler = 0
-cluster = MongoClient("mongodb+srv://Dennis:MHhRui10mongodb@cluster0.aitqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-db = cluster["Alfred-Krasse-App"]
-collection1 = db["Lehrerkürzel"]
-collection2 = db["Unterricht"]
-collection3 = db["Ausfall"]
-root = Tk()
-root.title('Alfred Krasse App')                         #titel name
-root.iconbitmap("./resources/images/HomeIcon.ico")      #Bild (icon oben links)
-rootHeight = root.winfo_screenheight()                        #die Höhe des Fensters
-rootWidth = root.winfo_screenwidth()
-root.geometry("%dx%d+0+0"%(rootWidth,rootHeight))
+seitenzähler = 0 #Seite wird gezählt und definiert
+cluster = MongoClient("mongodb+srv://Dennis:MHhRui10mongodb@cluster0.aitqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority") #Datenbankaufruf
+db = cluster["Alfred-Krasse-App"] #Die Datenbank auslesen
+collection1 = db["Lehrerkürzel"] #Einzelne Daten de Datenbank auslesen
+collection2 = db["Unterricht"]#Einzelne Daten de Datenbank auslesen
+collection3 = db["Ausfall"]#Einzelne Daten de Datenbank auslesen
+root = Tk() #Fenster erstellen
+root.title('Alfred Krasse App')                         #Name des Fensters
+root.iconbitmap("./resources/images/HomeIcon.ico")      #Bild (icon oben links) laden
+rootHeight = root.winfo_screenheight()                  #die Höhe des Fensters
+rootWidth = root.winfo_screenwidth()                    #Die Breite des Fensters
+root.geometry("%dx%d+0+0"%(rootWidth,rootHeight))        #Fenstergröße wird dem Display entsprechend angepasst
 root['background'] = '#FFFEF6'                          #der Hintergrund
-db = cluster["Alfred-Krasse-App"]
-collection1 = db["Lehrerkürzel"]
 
-parent_navigation = Frame(root,width=rootWidth,height=rootHeight//4)
-parent_navigation.grid()
+parent_navigation = Frame(root,width=rootWidth,height=rootHeight//4)    #Hauptframe erstellt für die 4 navigations Button (Hauptmenü,Schule,Persönliche Daten, Unterricht)
+parent_navigation.grid()#Frame wird platziert
 
-unterricht_frame_navigation = Frame(parent_navigation,width=rootWidth//4,height=rootHeight//4)
-unterricht_frame_navigation.grid(row=0,column=0)
+unterricht_frame_navigation = Frame(parent_navigation,width=rootWidth//4,height=rootHeight//4)#Frame für Unterricht Button erstellt
+unterricht_frame_navigation.grid(row=0,column=0)#Frame wird platziert
 
-schule_frame_navigation = Frame(parent_navigation,width=rootWidth//4,height=rootHeight//4)
-schule_frame_navigation.grid(row=0,column=1)
+schule_frame_navigation = Frame(parent_navigation,width=rootWidth//4,height=rootHeight//4)#Frame für Schule Button wurde erstellt
+schule_frame_navigation.grid(row=0,column=1)#Frame wird platziert
 
-persönliche_daten_frame_navigation = Frame(parent_navigation,width=rootWidth//4,height=rootHeight//4)
-persönliche_daten_frame_navigation.grid(row=0,column=2)
+persönliche_daten_frame_navigation = Frame(parent_navigation,width=rootWidth//4,height=rootHeight//4)#Frame für Persönliche Daten Button wurde erstellt
+persönliche_daten_frame_navigation.grid(row=0,column=2)#Frame wird platziert
 
-hauptmenü_frame_navigation = Frame(parent_navigation,width=rootWidth//4,height=rootHeight//4)
-hauptmenü_frame_navigation.grid(row=0,column=3)
+hauptmenü_frame_navigation = Frame(parent_navigation,width=rootWidth//4,height=rootHeight//4)#Frame für Hauptmenü Button wurde erstellt
+hauptmenü_frame_navigation.grid(row=0,column=3)#Frame wird platziert
 
-frame_parent_bottom = Frame(root,width=rootWidth,height=rootHeight//2+rootHeight//4)
-frame_parent_bottom.grid(row=1)
+frame_parent_bottom = Frame(root,width=rootWidth,height=rootHeight//2+rootHeight//4)#Hauptframe für die Buttons unter der Navigation wurde erstellt
+frame_parent_bottom.grid(row=1)#Frame wird platziert
 
-frame_inhalt_event = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_event.grid(row=1,column=1)
+frame_inhalt_event = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für Inhalt wurde erstellt
+frame_inhalt_event.grid(row=1,column=1)#Frame wird platziert
 
-frame_inhalt_ausfall = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_ausfall.grid(row=1,column=2)
+frame_inhalt_ausfall = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für Inhalt Button erstellt
+frame_inhalt_ausfall.grid(row=1,column=2)#Frame wird platziert
 
-frame_inhalt_lehrerkürzel = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_lehrerkürzel.grid(row=1,column=1)
-frame_inhalt_lehrerkürzel.grid_forget()
+frame_inhalt_lehrerkürzel = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für Lehrerkürzel erstellt
+frame_inhalt_lehrerkürzel.grid(row=1,column=1)#Frame wird platziert
+frame_inhalt_lehrerkürzel.grid_forget()#Frame wird vergessen
 
-frame_inhalt_lehrerkürzel_tabelle = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_lehrerkürzel_tabelle.grid()
-frame_inhalt_lehrerkürzel_tabelle.grid_forget()
+frame_inhalt_lehrerkürzel_tabelle = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für die Tabelle in Lehrerkürzel erstellt
+frame_inhalt_lehrerkürzel_tabelle.grid()#Frame wird platziert
+frame_inhalt_lehrerkürzel_tabelle.grid_forget()#Frame wird vergessen
 
-frame_inhalt_über_schule = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_über_schule.grid(row=1,column=2)
-frame_inhalt_über_schule.grid_forget()
+frame_inhalt_über_schule = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für über Schule Button wurde erstellt
+frame_inhalt_über_schule.grid(row=1,column=2)#Frame wird platziert
+frame_inhalt_über_schule.grid_forget()#Frame wird vergessen
 
-frame_inhalt_über_schule_left = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_über_schule_left.grid()
-frame_inhalt_über_schule_left.grid_forget()
+frame_inhalt_über_schule_left = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für über Schule gespalten und links erstellt
+frame_inhalt_über_schule_left.grid()#Frame wird platziert
+frame_inhalt_über_schule_left.grid_forget()#Frame wird vergessen
 
-frame_inhalt_über_schule_right = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_inhalt_über_schule_right.grid()
-frame_inhalt_über_schule_right.grid_forget()
+frame_inhalt_über_schule_right = Frame(frame_parent_bottom,width=rootWidth//2,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame von über Schule rechts
+frame_inhalt_über_schule_right.grid()#Frame wird platziert
+frame_inhalt_über_schule_right.grid_forget()#Frame wird vergessen
 
-frame_event_button = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_event_button.grid()
-frame_event_button.grid_forget()
+frame_event_button = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für Event Button erstellt
+frame_event_button.grid()#Frame wird platziert
+frame_event_button.grid_forget()#Frame wird vergessen
 
-frame_ausfall_button = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_ausfall_button.grid()
-frame_ausfall_button.grid_forget()
+frame_ausfall_button = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für Ausfall Button erstellt
+frame_ausfall_button.grid()#Frame wird platziert
+frame_ausfall_button.grid_forget()#Frame wird vergessen
 
-frame_pers_daten = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")
-frame_pers_daten.grid()
-frame_pers_daten.grid_forget()
+frame_pers_daten = Frame(frame_parent_bottom,width=rootWidth,height=rootHeight//2+rootHeight//4,bg="#2d2d2d")#Frame für persönliche Daten erstellt
+frame_pers_daten.grid()#Frame wird platziert
+frame_pers_daten.grid_forget()#Frame wird vergessen
 
-frame_grid = Frame(root)
-frame_grid.grid()
-frame_grid.grid_forget()
+frame_grid = Frame(root)#Frame erstellt
+frame_grid.grid()#Frame wird platziert
+frame_grid.grid_forget()#Frame wird vergessen
 
-class Information:
+class Information: #Klasse für Tabelle (über die Schule erstellt)
     def __init__(self,Name2,Position):
         self.Name2 = Name2
         self.Position = Position
 
-def datenbank_ausgabe(anfang):
-    results = collection1.find({"$and":[{"_id":{"$lt":anfang+12}},{"_id":{"$gt":anfang-1}}]})
+def datenbank_ausgabe(anfang):#Datenbank ausgabe Funktion erstellt für Lehrerkürzel
+    results = collection1.find({"$and":[{"_id":{"$lt":anfang+12}},{"_id":{"$gt":anfang-1}}]})#Das Auslesen pro Seite beträgt maximal 12 Namen
     i=1
-    for result in results:
-        label1 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Kürzel"], relief="solid", borderwidth="2", width=90, height=3, bg="#2d2d2d", fg="#e4bc1f")
-        label2 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Name"], relief="solid", borderwidth="2", width=90, height=3,bg="#2d2d2d", fg="#e4bc1f")
-        label3 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Email"], relief="solid", borderwidth="2", width=90, height=3,bg="#2d2d2d", fg="#e4bc1f")
+    for result in results: #for Schleife um Tabelle zu erstellen
+        label1 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Kürzel"], relief="solid", borderwidth="2", width=90, height=3, bg="#2d2d2d", fg="#e4bc1f")#spalte 1 in Tabelle
+        label2 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Name"], relief="solid", borderwidth="2", width=90, height=3,bg="#2d2d2d", fg="#e4bc1f")#Spalte 2 in Tabelle
+        label3 = Label(frame_inhalt_lehrerkürzel_tabelle, text=result["Email"], relief="solid", borderwidth="2", width=90, height=3,bg="#2d2d2d", fg="#e4bc1f")#Spalte 3 in Tabelle
         label1.grid(row=i, column=1, sticky=W)
         label2.grid(row=i, column=2, sticky=W)
         label3.grid(row=i, column=3, sticky=W)
-        i+=1
+        i+=1 # um die Reihe zu erweitern (tabelle zu erhalten)
 
-def ausfall_vertretung():
-    forgetinhalt()
+def ausfall_vertretung(): #funktion per Buttondruck bei ausfall/vertretung
+    forgetinhalt()#alles machen, was in forgetinhalt steht()
     frame_ausfall_button.grid()
 
-    label_ausfall1 = Label(frame_ausfall_button,text=" Ausfallender Lehrer: ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
-    label_ausfall1.config(font=("Monteserrat",18))
-    label_ausfall1.place(x=0,y=0,width=rootWidth//3,height=120)
+    label_ausfall1 = Label(frame_ausfall_button,text=" Ausfallender Lehrer: ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")#Label erstellt mit Text
+    label_ausfall1.config(font=("Monteserrat",18))#Schrift wurde verändert
+    label_ausfall1.place(x=0,y=0,width=rootWidth//3,height=120)#platzierung von dem Label (Tabellen artig)
 
-    label_ausfall_1 = Label(frame_ausfall_button, text=" Vertretung/Entfall: ", relief="solid", borderwidth="2",bg="#2d2d2d", fg="#e4bc1f")
+    label_ausfall_1 = Label(frame_ausfall_button, text=" Vertretung/Entfall: ", relief="solid", borderwidth="2",bg="#2d2d2d", fg="#e4bc1f") #der rest ist genau so wie oben beschrieben
     label_ausfall_1.config(font=("Monteserrat",18))
     label_ausfall_1.place(x=640, y=0, width=rootWidth // 3, height=120)
 
@@ -146,11 +144,11 @@ def ausfall_vertretung():
     label_ausfall__3.config(font=("Monteserrat", 16))
     label_ausfall__3.place(x=1280, y=120 * 3, width=rootWidth // 3, height=120)
 
-def event():
+def event(): #Funktion (command) von Event erstellt
     forgetinhalt()
     frame_event_button.grid()
 
-    label_Gurs = Label(frame_event_button, text=" Gurs 1940 - Ausstellung (KLI) ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f")
+    label_Gurs = Label(frame_event_button, text=" Gurs 1940 - Ausstellung (KLI) ", relief="solid", borderwidth="2",  bg="#2d2d2d", fg="#e4bc1f") #das selbe gilt hier, wie bei def event():
     label_Gurs.config(font=("Monteserrat",16))
     label_Gurs.place(x=0,y=0,width=960,height=158)
 
@@ -190,45 +188,45 @@ def event():
     label_winterferien_datum.config(font=("Monteserrat", 16))
     label_winterferien_datum.place(x=960,y=158*4,width=960,height=158)
 
-def add_seitenzähler():
-    global seitenzähler
-    seitenzähler += 1
+def add_seitenzähler(): #funktion zum Seiten zählen
+    global seitenzähler #wurde globalisiert (überall aufrufbar)
+    seitenzähler += 1 #Seite wird bei Knopfdruck +1
 
 
 def sub_seitenzähler():
-    global seitenzähler
-    if seitenzähler > 0:
-        seitenzähler -= 1
+    global seitenzähler#wurde globalisiert(überall aufrufbar)
+    if seitenzähler > 0:#wenn Seitenzahl größer als 0 ist,gilt das unten
+        seitenzähler -= 1 #Seite wird bei Knopfdruck -1
 
-def forget_for_lehrerkürzel():
-    myEvent.place_forget()
-    myAusfall.place_forget()
-    frame_event_button.grid_forget()
-    frame_ausfall_button.grid_forget()
-    frame_event_button.grid_forget()
-    myLehrerkürzel.place_forget()
-    frame_inhalt_über_schule_left.grid_forget()
-    frame_inhalt_über_schule_right.grid_forget()
-    myInformation.place_forget()
-    frame_grid.place_forget()
-    frame_inhalt_ausfall.grid_forget()
-    frame_inhalt_event.grid_forget()
-    frame_inhalt_über_schule.grid_forget()
-    frame_inhalt_lehrerkürzel.grid_forget()
-    buttonblack()
-    for child in frame_inhalt_lehrerkürzel.winfo_children():
+def forget_for_lehrerkürzel():#Funktion nur für lehrerkürzel
+    myEvent.place_forget() #Button wird vergessen
+    myAusfall.place_forget()#Button wird vergessen
+    frame_event_button.grid_forget()#Frame wird vergessen
+    frame_ausfall_button.grid_forget()#Frame wird vergessen
+    frame_event_button.grid_forget()#Frame wird vergessen
+    myLehrerkürzel.place_forget()#Button wird vergessen
+    frame_inhalt_über_schule_left.grid_forget()#Frame wird vergessen
+    frame_inhalt_über_schule_right.grid_forget()#Frame wird vergessen
+    myInformation.place_forget()#Button wird vergessen
+    frame_grid.place_forget()#Button wird vergessen
+    frame_inhalt_ausfall.grid_forget()#Frame wird vergessen
+    frame_inhalt_event.grid_forget()#Frame wird vergessen
+    frame_inhalt_über_schule.grid_forget()#Frame wird vergesen
+    frame_inhalt_lehrerkürzel.grid_forget()#Frame wird vergessen
+    buttonblack()#Funktion wird ausgeführt
+    for child in frame_inhalt_lehrerkürzel.winfo_children():#in Lehrerkürzel werden alle Kinderframes vergessen und das solange, bis es keine mehr gibt
         child.place_forget()
 
-    for child in frame_inhalt_über_schule.winfo_children():
+    for child in frame_inhalt_über_schule.winfo_children():#in über_schule werden alle Kinderframes vergessen und das solange, bis es keine mehr gibt
         child.place_forget()
 
-    for child in frame_inhalt_ausfall.winfo_children():
+    for child in frame_inhalt_ausfall.winfo_children():#in ausfall  werden alle Kinderframes vergessen und das solange, bis es keine mehr gibt
         child.place_forget()
 
-    for child in frame_inhalt_event.winfo_children():
+    for child in frame_inhalt_event.winfo_children():#in event  werden alle Kinderframes vergessen und das solange, bis es keine mehr gibt
         child.place_forget()
 
-def forgetinhalt():
+def forgetinhalt():#gilt das selbe wie bei forget_for_lehrerkürzel nur diesmal für alle Buttons/Funktionen außer Lehrerkürzel
     myEvent.place_forget()
     frame_event_button.grid_forget()
     frame_pers_daten.grid_forget()
@@ -258,28 +256,28 @@ def forgetinhalt():
     frame_inhalt_über_schule.grid_forget()
     frame_inhalt_lehrerkürzel.grid_forget()
     buttonblack()
-    global seitenzähler
-    seitenzähler = 0
+    global seitenzähler #globalisiert (überall aufrufbar)
+    seitenzähler = 0 #seite wird auf 0 gestellt
 
-def buttonblack():
-    myButton1.config(bg="#2d2d2d")
+def buttonblack():#Funktin zum Knöpfe färben
+    myButton1.config(bg="#2d2d2d")#Buttons werden gefärbt
     myButton2.config(bg="#2d2d2d")
     myButton3.config(bg="#2d2d2d")
     myButton4.config(bg="#2d2d2d")
 
-def unterricht():                                       #Funktion erstellen
+def unterricht():                                       #Funktion erstellen für Button Unterricht
     forgetinhalt()
-    myButton1.config(bg="#7f7f7f")
+    myButton1.config(bg="#7f7f7f")           #Button wird grau,wenn aktiv
 
-def hauptmenü():
+def hauptmenü():                #Funktion erstellt für Button Hauptmenü
     forgetinhalt()
-    frame_inhalt_event.grid(row=1,column=1)
+    frame_inhalt_event.grid(row=1,column=1) #frame wird aufgerufen
     frame_inhalt_ausfall.grid(row=1,column=2)
-    myEvent.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)
+    myEvent.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)#Button wird platziert
     myAusfall.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)
-    myButton4.config(bg="#7f7f7f")
+    myButton4.config(bg="#7f7f7f") #Button wird grau
 
-def schule():
+def schule():       #Funktion für Button Schule wird erstellt
     forgetinhalt()
     frame_inhalt_lehrerkürzel.grid(row=1,column=1)
     frame_inhalt_über_schule.grid(row=1,column=2)
