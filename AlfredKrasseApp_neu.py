@@ -229,7 +229,7 @@ def forget_for_lehrerkürzel():#Funktion nur für lehrerkürzel
         child.place_forget()
 
 def forgetinhalt():#gilt das selbe wie bei forget_for_lehrerkürzel nur diesmal für alle Buttons/Funktionen außer Lehrerkürzel
-    myEvent.place_forget()
+    myEvent.place_forget() #place_forget() bedeutet vergessen
     frame_event_button.grid_forget()
     frame_pers_daten.grid_forget()
     frame_ausfall_button.grid_forget()
@@ -241,10 +241,10 @@ def forgetinhalt():#gilt das selbe wie bei forget_for_lehrerkürzel nur diesmal 
     myLehrerkürzel.place_forget()
     myInformation.place_forget()
     frame_grid.place_forget()
-    for child in frame_inhalt_lehrerkürzel.winfo_children():
+    for child in frame_inhalt_lehrerkürzel.winfo_children(): #der Inhalt (Child) von lehrerkürzel wird gelöscht/vergessen
         child.place_forget()
 
-    for child in frame_inhalt_über_schule.winfo_children():
+    for child in frame_inhalt_über_schule.winfo_children():#hier passiert das selbe nur bei über_schule
         child.place_forget()
 
     for child in frame_inhalt_ausfall.winfo_children():
@@ -257,7 +257,7 @@ def forgetinhalt():#gilt das selbe wie bei forget_for_lehrerkürzel nur diesmal 
     frame_inhalt_event.grid_forget()
     frame_inhalt_über_schule.grid_forget()
     frame_inhalt_lehrerkürzel.grid_forget()
-    buttonblack()
+    buttonblack()#Funktion buttonblack() wird aufgerufen
     global seitenzähler #globalisiert (überall aufrufbar)
     seitenzähler = 0 #seite wird auf 0 gestellt
 
@@ -268,11 +268,11 @@ def buttonblack():#Funktin zum Knöpfe färben
     myButton4.config(bg="#2d2d2d")
 
 def unterricht():                                       #Funktion erstellen für Button Unterricht
-    forgetinhalt()
+    forgetinhalt()#Funktion forgetinhalt() wird aufgerufen
     myButton1.config(bg="#7f7f7f")           #Button wird grau,wenn aktiv
 
 def hauptmenü():                #Funktion erstellt für Button Hauptmenü
-    forgetinhalt()
+    forgetinhalt()#Funktion forgetinhalt() wird aufgerufen
     frame_inhalt_event.grid(row=1,column=1) #frame wird aufgerufen
     frame_inhalt_ausfall.grid(row=1,column=2)
     myEvent.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)#Button wird platziert
@@ -280,18 +280,18 @@ def hauptmenü():                #Funktion erstellt für Button Hauptmenü
     myButton4.config(bg="#7f7f7f") #Button wird grau
 
 def schule():       #Funktion für Button Schule wird erstellt
-    forgetinhalt()
-    frame_inhalt_lehrerkürzel.grid(row=1,column=1)
+    forgetinhalt()#Funktion forgetinhalt() wird aufgerufen
+    frame_inhalt_lehrerkürzel.grid(row=1,column=1)#Frame wird aufgerufen
     frame_inhalt_über_schule.grid(row=1,column=2)
-    myLehrerkürzel.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)
+    myLehrerkürzel.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)#Button wird platziert
     myInformation.place(x=0,y=0,width=rootWidth//2,height=rootHeight//2+rootHeight//4)
-    myButton2.config(bg="#7f7f7f")
+    myButton2.config(bg="#7f7f7f")#Button wird grau
 
-def read_input_field1():
-    global current_input1
-    current_input1 = float(input_field1.get())
+def read_input_field1():#erste Definition/Funktion für das erste Inputfeld (Persönliche Daten)
+    global current_input1#globalisiert (überall aufrufbar)
+    current_input1 = float(input_field1.get())#der Input muss eine Zahl sein (float) und wird mit .get erkannt und ausgewertet
 
-def read_input_field2():
+def read_input_field2():#passiert das selbe wir bei der oberen Funktion nur mit dem 2.Input-Feld
     global current_input2
     current_input2 = float(input_field2.get())
 
@@ -307,15 +307,15 @@ def read_input_field5():
     global current_input5
     current_input5 = float(input_field5.get())
 
-def graph_per_daten():
-    read_input_field1()
+def graph_per_daten():#Funktion um den graphen dar zu stellen
+    read_input_field1()#Funktion wird aufgerufen
     read_input_field2()
     read_input_field3()
     read_input_field4()
     read_input_field5()
-    summe = sum([current_input1, current_input2, current_input3,current_input4,current_input5])
-    anzahl = len([current_input1, current_input2, current_input3,current_input4,current_input5])
-    wert = summe / anzahl
+    summe = sum([current_input1, current_input2, current_input3,current_input4,current_input5])#die Summe der Noten ausrechnen
+    anzahl = len([current_input1, current_input2, current_input3,current_input4,current_input5])#die Anzahl der Noten ausrechnen
+    wert = summe / anzahl#Den durchschnitt ausrechnen
     x1 = 1
     y1 = wert
     x2 = [1,2,3,4,5]
